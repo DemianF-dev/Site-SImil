@@ -7,8 +7,8 @@
   - [x] Criar Skill: Frontend Refactor
   - [x] Criar Skill: Vercel & GitHub Integration
   - [x] Criar Skill: Deployment & Upgrade Pro
-  - [ ] Inicializar repositório Git
-  - [ ] Configurar `.gitignore` robusto
+  - [x] Inicializar repositório Git
+  - [x] Configurar `.gitignore` robusto
 
 - [ ] **Fase 1: Descoberta (Wayback Machine)**
   - [ ] Definir domínios alvo para recuperação
