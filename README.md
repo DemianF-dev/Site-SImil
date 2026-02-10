@@ -28,7 +28,7 @@ O site de produção oficial (Versão 2.2 - Ultra-Premium) está localizado na *
 ## 📁 Estrutura do Projeto
 
 - `/assets`: Recursos visuais e logotipos.
-- `index.html`: Estrutura principal (Sidney Milani Luxury Hub).
+- `index.html`: Estrutura principal (Edson Simões Luxury Hub).
 - `style.css`: Design System e animações premium.
 - `script.js`: Interações e lógica de reengenharia.
 - `/simil-recovered`: Backup da versão antiga recuperada via Wayback.
