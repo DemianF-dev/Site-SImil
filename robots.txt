@@ -1,0 +1,45 @@
+# robots.txt for SIMIL Inteligência Imobiliária
+# https://simil.com.br/robots.txt
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://simil.com.br/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 10
+
+# Disallow patterns
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.pdf$
+Disallow: /*?*
+
+# Allow specific files
+Allow: /sitemap.xml
+Allow: /manifest.json
+
+# User-agent specific rules
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 10
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 10
+
+# Block specific bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

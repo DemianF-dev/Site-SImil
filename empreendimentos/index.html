@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Empreendimentos | SIMIL - Imóveis de Alto Padrão em Bragança Paulista</title>
+    <meta name="description" content="Conheça nossos empreendimentos exclusivos em Bragança Paulista. Residenciais de alto padrão, loteamentos premium e oportunidades de investimento.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- CSS Principal do Site -->
+    <link rel="stylesheet" href="../style.css">
+    
+    <!-- CSS Específico da Página -->
+    <style>
+        /* ========================================
+           PÁGINA EMPREENDIMENTOS - ESTILOS ESPECÍFICOS
+           ======================================== */
+        
+        /* Page Header */
+        .page-header {
+            position: relative;
+            padding: 10rem 0 4rem;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        
+        .page-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        .page-header-bg .gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+        }
+        
+        .page-header-bg .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            top: -200px;
+            right: -100px;
+        }
+        
+        .page-header-bg .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            text-align: center;
+        }
+        
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        
+        .breadcrumbs a {
+            color: var(--gray-400);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .breadcrumbs a:hover {
+            color: var(--accent);
+        }
+        
+        .breadcrumbs span {
+            color: var(--gray-600);
+        }
+        
+        .page-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .page-title .title-line {
+            display: block;
+        }
+        
+        .page-title .accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .page-description {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+        
+        /* Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 0.75rem 1.5rem;
+            background: transparent;
+            border: 1px solid var(--dark-300);
+            border-radius: 100px;
+            color: var(--gray-400);
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+        
+        /* Properties Section */
+        .properties-page {
+            padding: 4rem 0;
+            background: var(--dark);
+        }
+        
+        .properties-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+        
+        /* Property Card Large */
+        .property-card-full {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            background: var(--dark-100);
+            border: 1px solid var(--dark-300);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.5s var(--ease-out-expo);
+        }
+        
+        .property-card-full:hover {
+            border-color: var(--accent);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
+        }
+        
+        .property-card-full.reverse {
+            direction: rtl;
+        }
+        
+        .property-card-full.reverse > * {
+            direction: ltr;
+        }
+        
+        /* Card Gallery */
+        .card-gallery {
+            position: relative;
+            min-height: 500px;
+            overflow: hidden;
+        }
+        
+        .gallery-main {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .gallery-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .gallery-image.active {
+            opacity: 1;
+        }
+        
+        .gallery-thumbs {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.75rem;
+            z-index: 10;
+        }
+        
+        .gallery-thumb {
+            width: 70px;
+            height: 50px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+        
+        .gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-thumb.active,
+        .gallery-thumb:hover {
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            z-index: 10;
+        }
+        
+        .property-badge.launch {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        .property-badge.opportunity {
+            background: #25D366;
+            color: var(--white);
+        }
+        
+        .property-badge.last-units {
+            background: #f9d423;
+            color: var(--primary);
+        }
+        
+        /* Card Details */
+        .card-details {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .card-details .card-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-details .property-type {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .card-details .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--gray-500);
+        }
+        
+        .card-details .property-title {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+        
+        .card-details .property-subtitle {
+            font-size: 1rem;
+            color: var(--gray-400);
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-details .property-description {
+            color: var(--gray-400);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .property-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .spec-item svg {
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+        
+        .spec-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .spec-label {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .spec-value {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 0.9375rem;
+        }
+        
+        .property-amenities {
+            margin-bottom: 2rem;
+        }
+        
+        .property-amenities h4 {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .amenities-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .amenity-tag {
+            padding: 0.5rem 1rem;
+            background: var(--dark-200);
+            border: 1px solid var(--dark-300);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            color: var(--gray-400);
+        }
+        
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            flex-wrap: wrap;
+        }
+        
+        .btn-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent-gradient);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 100px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-out-expo);
+            font-size: 0.9375rem;
+        }
+        
+        .btn-large:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(231, 68, 34, 0.3);
+        }
+        
+        .btn-ghost-large {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            border: 1px solid var(--dark-300);
+            color: var(--white);
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9375rem;
+        }
+        
+        .btn-ghost-large:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        /* Business Types Section */
+        .business-types-section {
+            padding: var(--space-4xl) 0;
+            background: var(--dark-100);
+        }
+        
+        .business-grid {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .business-card {
+            background: var(--dark);
+            border: 1px solid var(--dark-300);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        
+        .business-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .business-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-gradient);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .business-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .business-card p {
+            color: var(--gray-400);
+            font-size: 0.9375rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .business-features {
+            list-style: none;
+        }
+        
+        .business-features li {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .business-features li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+        
+        /* Coming Soon Section */
+        .coming-soon-section {
+            padding: var(--space-4xl) 0;
+            background: var(--dark);
+        }
+        
+        .coming-soon-container {
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 var(--container-padding);
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        
+        .coming-soon-content {
+            max-width: 600px;
+        }
+        
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .coming-soon-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .coming-soon-title span {
+            display: block;
+        }
+        
+        .coming-soon-title .highlight {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .coming-soon-text {
+            font-size: 1.125rem;
+            color: var(--gray-400);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .coming-soon-features {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .coming-soon-features .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--gray-300);
+        }
+        
+        .coming-soon-features .feature svg {
+            color: var(--accent);
+        }
+        
+        .cta-heading {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .cta-subheading {
+            color: var(--gray-500);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .coming-soon-visual {
+            position: relative;
+        }
+        
+        .visual-card {
+            background: var(--accent-gradient);
+            border-radius: 24px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.2) 1px, transparent 0);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+        
+        .visual-card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .visual-card-number {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+        
+        .visual-card-label {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal {
+            background: var(--dark-100);
+            border: 1px solid var(--dark-300);
+            border-radius: 24px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--dark-200);
+            border: none;
+            color: var(--gray-400);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+        
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+        
+        .modal-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-header p {
+            color: var(--gray-400);
+        }
+        
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .modal-form .form-group {
+            position: relative;
+        }
+        
+        .modal-form input,
+        .modal-form select,
+        .modal-form textarea {
+            width: 100%;
+            padding: 1rem 0;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--dark-300);
+            color: var(--white);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .modal-form input:focus,
+        .modal-form select:focus,
+        .modal-form textarea:focus {
+            border-color: var(--accent);
+        }
+        
+        .modal-form label {
+            position: absolute;
+            top: 1rem;
+            left: 0;
+            font-size: 1rem;
+            color: var(--gray-500);
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-form input:focus + label,
+        .modal-form input:valid + label,
+        .modal-form textarea:focus + label,
+        .modal-form textarea:valid + label {
+            top: -0.5rem;
+            font-size: 0.75rem;
+            color: var(--accent);
+        }
+        
+        .modal-form textarea {
+            resize: none;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .property-card-full {
+                grid-template-columns: 1fr;
+            }
+            
+            .property-card-full.reverse {
+                direction: ltr;
+            }
+            
+            .card-gallery {
+                min-height: 350px;
+            }
+            
+            .card-details {
+                padding: 2rem;
+            }
+            
+            .business-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .coming-soon-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+            
+            .coming-soon-visual {
+                order: -1;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 8rem 0 3rem;
+            }
+            
+            .property-specs {
+                grid-template-columns: 1fr;
+            }
+            
+            .card-actions {
+                flex-direction: column;
+            }
+            
+            .business-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .coming-soon-features {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <img src="../assets/logo.png" alt="SIMIL Logo" class="preloader-logo">
+            <div class="preloader-bar">
+                <div class="preloader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <img src="../assets/logo.png" alt="SIMIL Logo" class="nav-logo">
+            </a>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="../index.html" class="nav-link" data-text="Início">Início</a>
+                <a href="../index.html#metodo" class="nav-link" data-text="O Método">O Método</a>
+                <a href="index.html" class="nav-link active" data-text="Empreendimentos">Empreendimentos</a>
+                <a href="../index.html#sobre" class="nav-link" data-text="Sobre">Sobre</a>
+                <a href="../index.html#contato" class="nav-link" data-text="Contato">Contato</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+                    <svg class="theme-icon sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="theme-icon moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                
+                <a href="https://wa.me/5511940590642" class="btn-primary" target="_blank" rel="noopener noreferrer">
+                    <span>Fale Conosco</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu de navegação" aria-expanded="false" aria-controls="navMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="page-header-bg">
+                <div class="gradient-orb orb-1"></div>
+                <div class="gradient-orb orb-2"></div>
+            </div>
+            
+            <div class="page-header-content">
+                <div class="breadcrumbs">
+                    <a href="../index.html">Início</a>
+                    <span>/</span>
+                    <span>Empreendimentos</span>
+                </div>
+                
+                <h1 class="page-title">
+                    <span class="title-line">Nossos</span>
+                    <span class="title-line accent">Empreendimentos</span>
+                </h1>
+                
+                <p class="page-description">
+                    Curadoria exclusiva dos melhores empreendimentos em Bragança Paulista e região. 
+                    Cada projeto selecionado passa por rigorosa análise de viabilidade e potencial de valorização.
+                </p>
+                
+                <!-- Filter Buttons -->
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="residencial">Residencial</button>
+                    <button class="filter-btn" data-filter="loteamento">Loteamento</button>
+                    <button class="filter-btn" data-filter="alto-padrao">Alto Padrão</button>
+                    <button class="filter-btn" data-filter="lancamento">Lançamentos</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Properties Section -->
+        <section class="properties-page" id="empreendimentos">
+            <div class="properties-container">
+                <!-- Property Card 1 -->
+                <article class="property-card-full" data-category="residencial lancamento">
+                    <div class="card-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Residencial Portofino" class="gallery-image active">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Residencial Portofino - Área de Lazer" class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Residencial Portofino - Interior" class="gallery-image">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <button class="gallery-thumb active" data-index="0">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="1">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="2">
+                                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                        </div>
+                        <span class="property-badge launch">Lançamento</span>
+                    </div>
+                    
+                    <div class="card-details">
+                        <div class="card-meta">
+                            <span class="property-type">Residencial</span>
+                            <span class="property-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Bragança Paulista - SP
+                            </span>
+                        </div>
+                        
+                        <h2 class="property-title">Residencial Portofino</h2>
+                        <p class="property-subtitle">A exclusividade de viver em um dos endereços mais desejados da cidade</p>
+                        
+                        <div class="property-description">
+                            <p>Arquitetura contemporânea que harmoniza com o charme de Bragança Paulista. O Residencial Portofino oferece uma experiência única de living, com apartamentos espaçosos, áreas comuns premium e acabamento de alto padrão.</p>
+                        </div>
+                        
+                        <div class="property-specs">
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Área Privativa</span>
+                                    <span class="spec-value">128 a 320m²</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"></path>
+                                    <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"></path>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Dormitórios</span>
+                                    <span class="spec-value">3 a 4 suítes</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+                                    <line x1="1" y1="10" x2="23" y2="10"></line>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Vagas</span>
+                                    <span class="spec-value">2 a 4 vagas</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Entrega</span>
+                                    <span class="spec-value">Dezembro 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-amenities">
+                            <h4>Diferenciais</h4>
+                            <div class="amenities-list">
+                                <span class="amenity-tag">Piscina Infinita</span>
+                                <span class="amenity-tag">Academia Premium</span>
+                                <span class="amenity-tag">Salão de Festas</span>
+                                <span class="amenity-tag">Brinquedoteca</span>
+                                <span class="amenity-tag">Espaço Gourmet</span>
+                                <span class="amenity-tag">Segurança 24h</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <a href="https://wa.me/5511940590642?text=Olá! Gostaria de mais informações sobre o Residencial Portofino" class="btn-large" target="_blank">
+                                <span>Solicitar Informações</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </a>
+                            <button class="btn-ghost-large" onclick="showInterestModal('Residencial Portofino')">
+                                <span>Tenho Interesse</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 2 -->
+                <article class="property-card-full reverse" data-category="loteamento oportunidade">
+                    <div class="card-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Pérolas de Bragança" class="gallery-image active">
+                            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Pérolas de Bragança - Lotes" class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Pérolas de Bragança - Natureza" class="gallery-image">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <button class="gallery-thumb active" data-index="0">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="1">
+                                <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="2">
+                                <img src="https://images.unsplash.com/photo-1600573472592-401b489a3cdc?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                        </div>
+                        <span class="property-badge opportunity">Oportunidade</span>
+                    </div>
+                    
+                    <div class="card-details">
+                        <div class="card-meta">
+                            <span class="property-type">Loteamento</span>
+                            <span class="property-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Bragança Paulista - SP
+                            </span>
+                        </div>
+                        
+                        <h2 class="property-title">Pérolas de Bragança</h2>
+                        <p class="property-subtitle">Onde a natureza encontra a reengenharia urbana</p>
+                        
+                        <div class="property-description">
+                            <p>Oportunidade única para investidores visionários. Loteamento premium com infraestrutura completa, áreas verdes preservadas e potencial de valorização acima da média do mercado.</p>
+                        </div>
+                        
+                        <div class="property-specs">
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Área dos Lotes</span>
+                                    <span class="spec-value">300 a 1.000m²</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Segurança</span>
+                                    <span class="spec-value">Portaria 24h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Áreas Comuns</span>
+                                    <span class="spec-value">15.000m²</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Entrega</span>
+                                    <span class="spec-value">Junho 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-amenities">
+                            <h4>Infraestrutura</h4>
+                            <div class="amenities-list">
+                                <span class="amenity-tag">Ruas Asfaltadas</span>
+                                <span class="amenity-tag">Iluminação LED</span>
+                                <span class="amenity-tag">Água e Luz</span>
+                                <span class="amenity-tag">Áreas Verdes</span>
+                                <span class="amenity-tag">Praça Central</span>
+                                <span class="amenity-tag">Ciclovia</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <a href="https://wa.me/5511940590642?text=Olá! Gostaria de mais informações sobre o Pérolas de Bragança" class="btn-large" target="_blank">
+                                <span>Solicitar Informações</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </a>
+                            <button class="btn-ghost-large" onclick="showInterestModal('Pérolas de Bragança')">
+                                <span>Tenho Interesse</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Property Card 3 -->
+                <article class="property-card-full" data-category="alto-padrao">
+                    <div class="card-gallery">
+                        <div class="gallery-main">
+                            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Villa Serena" class="gallery-image active">
+                            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Villa Serena - Interior" class="gallery-image">
+                            <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Villa Serena - Área Externa" class="gallery-image">
+                        </div>
+                        <div class="gallery-thumbs">
+                            <button class="gallery-thumb active" data-index="0">
+                                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="1">
+                                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                            <button class="gallery-thumb" data-index="2">
+                                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=60" alt="">
+                            </button>
+                        </div>
+                        <span class="property-badge last-units">Últimas Unidades</span>
+                    </div>
+                    
+                    <div class="card-details">
+                        <div class="card-meta">
+                            <span class="property-type">Alto Padrão</span>
+                            <span class="property-location">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                Bragança Paulista - SP
+                            </span>
+                        </div>
+                        
+                        <h2 class="property-title">Villa Serena</h2>
+                        <p class="property-subtitle">Condomínio fechado com vista panorâmica privilegiada</p>
+                        
+                        <div class="property-description">
+                            <p>Exclusividade absoluta em condomínio fechado. Villa Serena combina segurança 24h, áreas de lazer completas e uma vista deslumbrante de Bragança Paulista.</p>
+                        </div>
+                        
+                        <div class="property-specs">
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="3" y1="9" x2="21" y2="9"></line>
+                                    <line x1="9" y1="21" x2="9" y2="9"></line>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Área Construída</span>
+                                    <span class="spec-value">180 a 450m²</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M20 9v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9"></path>
+                                    <path d="M9 22V12h6v10M2 10.6L12 2l10 8.6"></path>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Suítes</span>
+                                    <span class="spec-value">3 a 5 suítes</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Segurança</span>
+                                    <span class="spec-value">Monitoramento 24h</span>
+                                </div>
+                            </div>
+                            
+                            <div class="spec-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <div class="spec-info">
+                                    <span class="spec-label">Entrega</span>
+                                    <span class="spec-value">Pronto para Morar</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="property-amenities">
+                            <h4>Lazer Completo</h4>
+                            <div class="amenities-list">
+                                <span class="amenity-tag">Piscina Aquecida</span>
+                                <span class="amenity-tag">Quadra Tênis</span>
+                                <span class="amenity-tag">Academia</span>
+                                <span class="amenity-tag">Salão Jogos</span>
+                                <span class="amenity-tag">SPA</span>
+                                <span class="amenity-tag">Câmeras HD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card-actions">
+                            <a href="https://wa.me/5511940590642?text=Olá! Gostaria de mais informações sobre o Villa Serena" class="btn-large" target="_blank">
+                                <span>Solicitar Informações</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                </svg>
+                            </a>
+                            <button class="btn-ghost-large" onclick="showInterestModal('Villa Serena')">
+                                <span>Tenho Interesse</span>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Business Types Section -->
+        <section class="business-types-section" id="negocios">
+            <div class="section-header center" style="max-width: var(--container-max); margin: 0 auto; padding: 0 var(--container-padding) 4rem;">
+                <span class="section-tag">Nosso Portfólio</span>
+                <h2 class="section-title">
+                    <span>Tipos de</span>
+                    <span class="title-highlight">Negócios</span>
+                </h2>
+                <p class="section-description">Atuamos em diversos segmentos do mercado imobiliário, sempre com excelência e expertise</p>
+            </div>
+            
+            <div class="business-grid">
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Residencial de Alto Padrão</h3>
+                    <p>Empreendimentos exclusivos que combinam localização privilegiada, arquitetura contemporânea e acabamentos de luxo.</p>
+                    <ul class="business-features">
+                        <li>Apartamentos e casas de luxo</li>
+                        <li>Condomínios fechados</li>
+                        <li>Coberturas duplex</li>
+                        <li>Residências sustentáveis</li>
+                    </ul>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="3" y1="9" x2="21" y2="9"></line>
+                            <line x1="9" y1="21" x2="9" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Loteamentos Premium</h3>
+                    <p>Terrenos em condomínios planejados com infraestrutura completa e potencial de valorização acima da média.</p>
+                    <ul class="business-features">
+                        <li>Lotes residenciais</li>
+                        <li>Infraestrutura completa</li>
+                        <li>Projetos planejados</li>
+                        <li>Alta valorização</li>
+                    </ul>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Consultoria Estratégica</h3>
+                    <p>Análise especializada para incorporadores e investidores, identificando oportunidades e maximizando ROI.</p>
+                    <ul class="business-features">
+                        <li>Estudos de viabilidade</li>
+                        <li>Reposicionamento de ativos</li>
+                        <li>Estratégia de vendas</li>
+                        <li>Gestão de carteira</li>
+                    </ul>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Reengenharia de Vendas</h3>
+                    <p>Transformação de empreendimentos com dificuldades comerciais em cases de sucesso através de estratégias inovadoras.</p>
+                    <ul class="business-features">
+                        <li>Diagnóstico comercial</li>
+                        <li>Reposicionamento de marca</li>
+                        <li>Aceleração de vendas</li>
+                        <li>Recuperação de ativos</li>
+                    </ul>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <h3>Investimentos Internacionais</h3>
+                    <p>Oportunidades para investidores estrangeiros e brasileiros no exterior, com assessoria completa em transações.</p>
+                    <ul class="business-features">
+                        <li>Captação de investidores</li>
+                        <li>Assessoria jurídica</li>
+                        <li>Gestão de ativos</li>
+                        <li>Portfólio diversificado</li>
+                    </ul>
+                </div>
+                
+                <div class="business-card">
+                    <div class="business-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3>Lançamentos Exclusivos</h3>
+                    <p>Primeira mão nos melhores lançamentos de Bragança Paulista. Acesso antecipado com alto potencial de valorização.</p>
+                    <ul class="business-features">
+                        <li>Pré-lançamentos VIP</li>
+                        <li>Preços especiais</li>
+                        <li>Escolha de unidades</li>
+                        <li>Condições diferenciadas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coming Soon Section -->
+        <section class="coming-soon-section">
+            <div class="coming-soon-container">
+                <div class="coming-soon-content">
+                    <div class="coming-soon-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>Em Breve</span>
+                    </div>
+                    
+                    <h2 class="coming-soon-title">
+                        <span>Novos Empreendimentos</span>
+                        <span class="highlight">Sendo Adicionados</span>
+                    </h2>
+                    
+                    <p class="coming-soon-text">
+                        Estamos em constante expansão do nosso portfólio. Novos projetos selecionados 
+                        estão sendo incorporados ao site gradualmente. Cada empreendimento passa por 
+                        rigorosa análise antes de ser apresentado aos nossos clientes.
+                    </p>
+                    
+                    <div class="coming-soon-features">
+                        <div class="feature">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                            </svg>
+                            <span>Análise de Viabilidade</span>
+                        </div>
+                        <div class="feature">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            <span>Curadoria Exclusiva</span>
+                        </div>
+                        <div class="feature">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            <span>Alto Potencial</span>
+                        </div>
+                    </div>
+                    
+                    <h3 class="cta-heading">Na dúvida, entre em contato conosco!</h3>
+                    <p class="cta-subheading">Nossa equipe está pronta para apresentar oportunidades exclusivas que ainda não estão no site.</p>
+                    
+                    <div class="cta-group">
+                        <a href="https://wa.me/5511940590642?text=Olá! Gostaria de conhecer empreendimentos exclusivos" class="btn-large" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            <span>Falar no WhatsApp</span>
+                        </a>
+                        <a href="../index.html#contato" class="btn-ghost-large">
+                            <span>Formulário de Contato</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="coming-soon-visual">
+                    <div class="visual-card">
+                        <div class="card-pattern"></div>
+                        <div class="visual-card-content">
+                            <span class="visual-card-number">+50</span>
+                            <span class="visual-card-label">Novos Projetos<br>em Análise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact CTA Section -->
+        <section class="contact" style="padding: var(--space-4xl) 0;">
+            <div class="contact-container">
+                <div class="contact-content" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                    <div class="section-header center" style="margin-bottom: 3rem;">
+                        <span class="section-tag">Fale Conosco</span>
+                        <h2 class="section-title">
+                            <span>Não encontrou</span>
+                            <span class="title-highlight">o que procura?</span>
+                        </h2>
+                        <p class="section-description">Temos acesso a empreendimentos exclusivos e oportunidades off-market</p>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                        <a href="tel:11940590642" class="btn-primary" style="padding: 1.25rem 2.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span>Ligar Agora</span>
+                        </a>
+                        <a href="https://wa.me/5511940590642" class="btn-ghost-large" target="_blank" style="background: #25D366; color: white; border-color: #25D366;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            <span>WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interest Modal -->
+    <div class="modal-overlay" id="interestModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose" aria-label="Fechar modal">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <div class="modal-header">
+                <h3>Registrar Interesse</h3>
+                <p id="modalPropertyName">No empreendimento</p>
+            </div>
+            
+            <form class="modal-form" id="interestForm">
+                <div class="form-group">
+                    <input type="text" id="interestName" required>
+                    <label for="interestName">Seu Nome</label>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" id="interestEmail" required>
+                        <label for="interestEmail">E-mail</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="interestPhone" required>
+                        <label for="interestPhone">Telefone</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <select id="interestType" required>
+                        <option value="">Tipo de Interesse</option>
+                        <option value="morar">Morar</option>
+                        <option value="investir">Investir</option>
+                        <option value="ambos">Ambos</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <textarea id="interestMessage" rows="3" placeholder="Conte-nos mais sobre o que você procura (opcional)"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-submit-modal">
+                    <span>Enviar Interesse</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="../index.html" class="footer-logo">
+                        <img src="../assets/logo.png" alt="SIMIL Logo" class="footer-logo-img">
+                    </a>
+                    <p class="footer-tagline">Reengenharia Imobiliária de Excelência</p>
+                    <p class="footer-creds">CRECI: 025630-J</p>
+                </div>
+
+                <div class="footer-nav">
+                    <div class="footer-col">
+                        <h5>Navegação</h5>
+                        <ul>
+                            <li><a href="../index.html">Início</a></li>
+                            <li><a href="../index.html#metodo">O Método</a></li>
+                            <li><a href="index.html">Empreendimentos</a></li>
+                            <li><a href="../index.html#sobre">Sobre</a></li>
+                            <li><a href="../index.html#contato">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Empreendimentos</h5>
+                        <ul>
+                            <li><a href="#" onclick="scrollToProperty('portofino')">Residencial Portofino</a></li>
+                            <li><a href="#" onclick="scrollToProperty('perolas')">Pérolas de Bragança</a></li>
+                            <li><a href="#" onclick="scrollToProperty('villa')">Villa Serena</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h5>Contato</h5>
+                        <ul>
+                            <li>Av. Salvador Markowicz, 330</li>
+                            <li>Sala 20 - Bairro Taboão</li>
+                            <li>Bragança Paulista - SP</li>
+                            <li><a href="tel:11940590642">(11) 94059-0642</a></li>
+                            <li><a href="mailto:contato@simil.com.br">contato@simil.com.br</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 SIMIL Inteligência Imobiliária. Todos os direitos reservados.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/simil.imobiliaria/" target="_blank" aria-label="Instagram">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/similservicosimobiliarios" target="_blank" aria-label="Facebook">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://wa.me/5511940590642" target="_blank" aria-label="WhatsApp">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <a href="https://wa.me/5511940590642" class="whatsapp-float" target="_blank" aria-label="Fale pelo WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts -->
+    <script src="../script.js"></script>
+    <script>
+        // Página de Empreendimentos - Scripts específicos
+        
+        // Gallery functionality
+        function initGallery() {
+            const galleries = document.querySelectorAll('.card-gallery');
+            
+            galleries.forEach(gallery => {
+                const thumbs = gallery.querySelectorAll('.gallery-thumb');
+                const images = gallery.querySelectorAll('.gallery-image');
+                
+                thumbs.forEach((thumb, index) => {
+                    thumb.addEventListener('click', () => {
+                        thumbs.forEach(t => t.classList.remove('active'));
+                        images.forEach(img => img.classList.remove('active'));
+                        thumb.classList.add('active');
+                        if (images[index]) images[index].classList.add('active');
+                    });
+                });
+            });
+        }
+        
+        // Filter functionality
+        function initFilters() {
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const propertyCards = document.querySelectorAll('.property-card-full');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    propertyCards.forEach(card => {
+                        if (filter === 'all') {
+                            card.style.display = 'grid';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            const categories = card.getAttribute('data-category');
+                            if (categories && categories.includes(filter)) {
+                                card.style.display = 'grid';
+                                setTimeout(() => {
+                                    card.style.opacity = '1';
+                                    card.style.transform = 'translateY(0)';
+                                }, 50);
+                            } else {
+                                card.style.opacity = '0';
+                                card.style.transform = 'translateY(20px)';
+                                setTimeout(() => card.style.display = 'none', 300);
+                            }
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Modal functionality
+        function initModal() {
+            const modal = document.getElementById('interestModal');
+            const modalClose = document.getElementById('modalClose');
+            const interestForm = document.getElementById('interestForm');
+            
+            if (modalClose) {
+                modalClose.addEventListener('click', closeModal);
+            }
+            
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+            
+            if (interestForm) {
+                interestForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Mostrar toast de sucesso
+                    const container = document.getElementById('toastContainer');
+                    if (container) {
+                        const toast = document.createElement('div');
+                        toast.className = 'toast success';
+                        toast.innerHTML = `
+                            <div class="toast-icon">✓</div>
+                            <div class="toast-content">
+                                <div class="toast-title">Sucesso!</div>
+                                <div class="toast-message">Seu interesse foi registrado. Entraremos em contato em breve.</div>
+                            </div>
+                        `;
+                        toast.style.cssText = `
+                            background: var(--dark-100);
+                            border: 1px solid var(--dark-300);
+                            border-left: 4px solid #25D366;
+                            border-radius: 12px;
+                            padding: 1rem 1.5rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 1rem;
+                            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+                            transform: translateX(120%);
+                            opacity: 0;
+                            transition: all 0.4s ease;
+                        `;
+                        container.appendChild(toast);
+                        
+                        setTimeout(() => {
+                            toast.style.transform = 'translateX(0)';
+                            toast.style.opacity = '1';
+                        }, 10);
+                        
+                        setTimeout(() => {
+                            toast.style.transform = 'translateX(120%)';
+                            toast.style.opacity = '0';
+                            setTimeout(() => toast.remove(), 400);
+                        }, 4000);
+                    }
+                    
+                    closeModal();
+                    interestForm.reset();
+                });
+            }
+            
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        }
+        
+        function showInterestModal(propertyName) {
+            const modal = document.getElementById('interestModal');
+            const propertyNameEl = document.getElementById('modalPropertyName');
+            
+            if (modal && propertyNameEl) {
+                propertyNameEl.textContent = 'No empreendimento: ' + propertyName;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('interestModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+        
+        function scrollToProperty(propertyId) {
+            const cards = document.querySelectorAll('.property-card-full');
+            cards.forEach(card => {
+                const title = card.querySelector('.property-title');
+                if (title) {
+                    const titleText = title.textContent.toLowerCase().replace(/\s+/g, '-');
+                    if (titleText.includes(propertyId.toLowerCase())) {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        card.style.borderColor = 'var(--accent)';
+                        setTimeout(() => card.style.borderColor = '', 2000);
+                    }
+                }
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            initGallery();
+            initFilters();
+            initModal();
+        });
+    </script>
+</body>
+</html>
