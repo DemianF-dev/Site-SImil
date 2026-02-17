@@ -2775,6 +2775,7 @@ select:focus-visible {
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -2783,7 +2784,7 @@ select:focus-visible {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-    
+
     .scroll-progress-bar,
     .particle-canvas {
         display: none;
@@ -2796,7 +2797,7 @@ select:focus-visible {
         --accent: #ff6b35;
         --accent-light: #ffd700;
     }
-    
+
     .nav-link::after,
     .btn-primary,
     .btn-magnetic .btn-bg,
@@ -2808,6 +2809,7 @@ select:focus-visible {
 
 /* Print Styles */
 @media print {
+
     .navbar,
     .preloader,
     .cursor,
@@ -2822,12 +2824,12 @@ select:focus-visible {
     .particle-canvas {
         display: none !important;
     }
-    
+
     body {
         background: white;
         color: black;
     }
-    
+
     .hero {
         min-height: auto;
         padding: 2rem 0;
@@ -2840,25 +2842,25 @@ select:focus-visible {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .toast-container {
         top: 80px;
         right: 1rem;
         left: 1rem;
         max-width: none;
     }
-    
+
     .social-proof-container {
         left: 1rem;
         bottom: 80px;
         max-width: calc(100% - 2rem);
     }
-    
+
     .share-float,
     .scroll-top {
         right: 1rem;
     }
-    
+
     .share-float {
         bottom: 80px;
     }
@@ -2869,15 +2871,15 @@ select:focus-visible {
         padding: 0.75rem 1.5rem;
         font-size: 0.875rem;
     }
-    
+
     .calculator-form {
         padding: 1.5rem;
     }
-    
+
     .result-value {
         font-size: 1.25rem;
     }
-    
+
     .theme-toggle {
         width: 40px;
         height: 40px;

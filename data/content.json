@@ -1,0 +1,265 @@
+{
+  "site": {
+    "title": "SIMIL | Reengenharia Imobiliária de Alto Padrão",
+    "description": "Transformamos ativos imobiliários em sucessos comerciais há 40+ anos. Consultoria estratégica, reengenharia de vendas e empreendimentos exclusivos. CRECI 025630-J.",
+    "keywords": "imobiliária, consultoria imobiliária, reengenharia de vendas, empreendimentos de alto padrão, investimentos imobiliários, Edson Simões, SIMIL, incorporadora, lançamentos imobiliários",
+    "author": "SIMIL Inteligência Imobiliária",
+    "url": "https://simil.com.br"
+  },
+  "hero": {
+    "label": "Edson Simões",
+    "title_line1": "Reengenharia",
+    "title_line2": "Imobiliária",
+    "title_line3": "de Excelência",
+    "description": "Transformamos ativos imobiliários em sucessos comerciais através de estratégia, inteligência de mercado e décadas de experiência em todo o mercado imobiliário.",
+    "cta_primary": "Ver Empreendimentos",
+    "cta_secondary": "Conhecer o Método",
+    "stats": {
+      "experience": {
+        "number": 40,
+        "suffix": "+",
+        "label": "Anos de Experiência"
+      },
+      "developments": {
+        "number": 500,
+        "suffix": "+",
+        "label": "Empreendimentos"
+      },
+      "success_rate": {
+        "number": 98,
+        "suffix": "%",
+        "label": "Taxa de Sucesso"
+      }
+    },
+    "floating_cards": {
+      "card1": {
+        "value": "R$ 2.5B",
+        "label": "Em Vendas"
+      },
+      "card2": {
+        "value": "Premium",
+        "label": "Consultoria"
+      }
+    }
+  },
+  "navigation": {
+    "home": "Início",
+    "method": "O Método",
+    "developments": "Empreendimentos",
+    "about": "Sobre",
+    "contact": "Contato",
+    "cta_button": "Fale Conosco"
+  },
+  "method": {
+    "tag": "Nossa Metodologia",
+    "title": "O Método",
+    "highlight": "SIMIL",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Diagnóstico Estratégico",
+        "description": "Análise profunda do ativo imobiliário, identificando potenciais, gargalos e oportunidades únicas no mercado.",
+        "features": [
+          "Análise de viabilidade",
+          "Estudo de mercado local",
+          "Benchmarking competitivo"
+        ]
+      },
+      {
+        "number": "02",
+        "title": "Reengenharia Comercial",
+        "description": "Reposicionamento estratégico do empreendimento com plano de ação personalizado para maximizar velocidade de vendas e valorização.",
+        "features": [
+          "Reposicionamento de marca",
+          "Estratégia de precificação",
+          "Plano de marketing direcionado"
+        ]
+      },
+      {
+        "number": "03",
+        "title": "Execução de Excelência",
+        "description": "Implementação das estratégias com acompanhamento contínuo, garantindo resultados superiores e relacionamento de longo prazo.",
+        "features": [
+          "Gestão de vendas ativa",
+          "Relatórios em tempo real",
+          "Otimização contínua"
+        ]
+      }
+    ],
+    "badge": {
+      "number": 40,
+      "text": "Anos de Legado"
+    }
+  },
+  "properties": {
+    "tag": "Portfolio",
+    "title": "Empreendimentos",
+    "highlight": "Exclusivos",
+    "description": "Curadoria selecionada dos melhores empreendimentos da região",
+    "cta": "Ver todos os empreendimentos",
+    "items": [
+      {
+        "name": "Residencial Portofino",
+        "status": "Lançamento",
+        "type": "Residencial",
+        "location": "Bragança Paulista",
+        "description": "A exclusividade de viver em um dos endereços mais desejados da cidade, com arquitetura contemporânea e áreas comuns premium.",
+        "features": {
+          "area": "128 a 320m²",
+          "rooms": "3 a 4 Dorms"
+        }
+      },
+      {
+        "name": "Pérolas de Bragança",
+        "status": "Oportunidade",
+        "type": "Loteamento",
+        "location": "Bragança Paulista",
+        "description": "Loteamento premium onde a natureza encontra a reengenharia urbana. Oportunidade única para investidores visionários.",
+        "features": {
+          "area": "300 a 1.000m²",
+          "delivery": "Entrega 2026"
+        }
+      },
+      {
+        "name": "Villa Serena",
+        "status": "Últimas Unidades",
+        "type": "Alto Padrão",
+        "location": "Bragança Paulista",
+        "description": "Condomínio fechado de alto padrão com segurança 24h, áreas de lazer completas e vista panorâmica privilegiada.",
+        "features": {
+          "area": "180 a 450m²",
+          "rooms": "3 a 5 Suítes"
+        }
+      }
+    ]
+  },
+  "calculator": {
+    "tag": "Ferramenta Exclusiva",
+    "title": "Calcule seu",
+    "highlight": "Retorno",
+    "description": "Simule o potencial de valorização do seu investimento imobiliário",
+    "labels": {
+      "investment": "Valor do Investimento (R$)",
+      "time": "Prazo do Investimento",
+      "rate": "Taxa de Valorização Anual (%)",
+      "button": "Calcular Projeção"
+    },
+    "results": {
+      "future_value": "Valor Futuro Estimado",
+      "appreciation": "Ganho em Valorização",
+      "roi": "ROI Total"
+    },
+    "disclaimer": "* Projeção baseada em dados históricos do mercado imobiliário. Valores são estimativas e podem variar."
+  },
+  "about": {
+    "tag": "Sobre",
+    "title": "Liderança &",
+    "highlight": "Autoridade",
+    "lead": "Edson Simões é o estrategista à frente da SIMIL, consolidando décadas de experiência no mercado imobiliário consultivo de alto padrão.",
+    "paragraphs": [
+      "Sua metodologia de Reengenharia de Vendas é o pilar que transforma desafios comerciais em ativos de alta liquidez e lucratividade. A SIMIL opera como uma boutique de inteligência imobiliária, onde a tradição encontra a inovação.",
+      "Oferecemos soluções personalizadas para incorporadores e investidores que não aceitam nada menos que a excelência."
+    ],
+    "credentials": [
+      {
+        "icon": "trophy",
+        "text": "CRECI 025630-J"
+      },
+      {
+        "icon": "star",
+        "text": "40+ Anos de Legado"
+      },
+      {
+        "icon": "target",
+        "text": "Alto Padrão"
+      }
+    ],
+    "cta": "Agendar Consultoria",
+    "floating_info": {
+      "title": "Novo Endereço",
+      "address": "Av. Salvador Markowicz, 330"
+    }
+  },
+  "testimonials": {
+    "tag": "Depoimentos",
+    "title": "O que dizem",
+    "highlight": "nossos clientes",
+    "items": [
+      {
+        "text": "A SIMIL transformou nosso empreendimento que estava parado há meses em um sucesso de vendas. A visão estratégica de Edson é incomparável.",
+        "author": "Ricardo Campos",
+        "role": "Incorporador, Bragança Paulista",
+        "initials": "RC"
+      },
+      {
+        "text": "Investir com a orientação da SIMIL foi a melhor decisão. O conhecimento do mercado local e as oportunidades apresentadas superaram todas as expectativas.",
+        "author": "Ana Maria Silva",
+        "role": "Investidora, São Paulo",
+        "initials": "AM"
+      },
+      {
+        "text": "Profissionalismo, expertise e resultados. A SIMIL entregou muito além do prometido. Recomendo a todos que buscam excelência no mercado imobiliário.",
+        "author": "Fernando Oliveira",
+        "role": "Construtor, Campinas",
+        "initials": "FO"
+      }
+    ]
+  },
+  "contact": {
+    "tag": "Contato",
+    "title": "Vamos",
+    "highlight": "conversar",
+    "description": "Entre em contato para uma consultoria personalizada e descubra como podemos transformar seu projeto imobiliário.",
+    "info": {
+      "address": {
+        "title": "Endereço",
+        "street": "Av. Salvador Markowicz, 330 - Sala 20",
+        "neighborhood": "Bairro Taboão",
+        "city": "Bragança Paulista - SP",
+        "cep": "12916-400"
+      },
+      "phone": {
+        "title": "Telefone",
+        "number": "(11) 94059-0642",
+        "whatsapp": "5511940590642"
+      },
+      "email": {
+        "title": "E-mail",
+        "address": "edsonsym@uol.com.br"
+      }
+    },
+    "social": {
+      "instagram": "https://www.instagram.com/simil.imobiliaria/",
+      "facebook": "https://www.facebook.com/similservicosimobiliarios",
+      "whatsapp": "https://wa.me/5511940590642"
+    },
+    "form": {
+      "name": "Seu Nome",
+      "email": "E-mail",
+      "phone": "Telefone",
+      "interest": "Selecione o interesse",
+      "message": "Sua Mensagem",
+      "submit": "Enviar Mensagem",
+      "interests": [
+        "Investimento",
+        "Lançamento",
+        "Consultoria",
+        "Outro"
+      ]
+    }
+  },
+  "footer": {
+    "tagline": "Reengenharia Imobiliária de Excelência",
+    "creci": "CRECI: 025630-J",
+    "navigation": {
+      "title": "Navegação",
+      "items": ["Início", "O Método", "Empreendimentos", "Sobre", "Contato"]
+    },
+    "services": {
+      "title": "Serviços",
+      "items": ["Consultoria Estratégica", "Reengenharia Comercial", "Lançamentos", "Investimentos"]
+    },
+    "contact_title": "Contato",
+    "copyright": "© 2026 SIMIL Inteligência Imobiliária. Todos os direitos reservados."
+  }
+}
