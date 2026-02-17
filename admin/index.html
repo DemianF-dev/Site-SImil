@@ -47,5 +47,38 @@
         <p>Carregando painel de administração...</p>
     </div>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+        CMS.init({
+            config: {
+                backend: {
+                    name: 'github',
+                    repo: 'DemianF-dev/Site-SImil',
+                    branch: 'main'
+                },
+                locale: 'pt',
+                media_folder: 'assets/uploads',
+                public_folder: '/assets/uploads',
+                collections: [
+                    {
+                        name: 'site_content',
+                        label: 'Conteúdo do Site',
+                        files: [
+                            {
+                                name: 'site',
+                                label: 'Configurações do Site',
+                                file: 'data/content.json',
+                                fields: [
+                                    { label: 'Título do Site', name: 'title', widget: 'string', required: false },
+                                    { label: 'Descrição (SEO)', name: 'description', widget: 'text', required: false },
+                                    { label: 'Palavras-chave', name: 'keywords', widget: 'string', required: false },
+                                    { label: 'URL do Site', name: 'url', widget: 'string', required: false }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        });
+    </script>
 </body>
 </html>
