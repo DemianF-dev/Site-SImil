@@ -4,10 +4,10 @@ export default async function handler(req, res) {
   }
 
   const rootUrl = 'https://github.com/login/oauth/authorize';
-  const redirectUri = process.env.GITHUB_REDIRECT_URI || 'https://www.simil.com.br/api/auth/callback';
+  const redirectUri = process.env.OAUTH_REDIRECT_URI || 'https://www.simil.com.br/api/auth/callback';
   
   const options = {
-    client_id: process.env.GITHUB_CLIENT_ID,
+    client_id: process.env.OAUTH_CLIENT_ID,
     redirect_uri: redirectUri,
     scope: 'repo,user',
     state: req.query.state || Math.random().toString(36).substring(7),
