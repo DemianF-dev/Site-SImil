@@ -2,6 +2,8 @@ backend:
   name: github
   repo: DemianF-dev/Site-SImil
   branch: main
+  base_url: https://www.simil.com.br
+  auth_endpoint: api/auth
 
 local_backend: true
 locale: "pt"
