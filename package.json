@@ -1,0 +1,11 @@
+{
+  "name": "site-simil",
+  "version": "1.0.0",
+  "description": "Site SIMIL - Reengenharia Imobiliária",
+  "scripts": {
+    "start": "serve ."
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  }
+}
