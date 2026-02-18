@@ -19,38 +19,45 @@
         <h1>SIMIL CMS</h1>
         <p>Carregando painel de administração...</p>
     </div>
-    <script>
-        window.CMS_MANUAL_INIT = true;
-    </script>
     <script src="https://unpkg.com/decap-cms@3.1.12/dist/decap-cms.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            CMS.init({
-                config: {
-                    backend: {
-                        name: 'github',
-                        repo: 'DemianF-dev/Site-SImil',
-                        branch: 'main'
-                    },
-                    locale: 'pt',
-                    media_folder: 'assets/uploads',
-                    public_folder: '/assets/uploads',
-                    collections: [{
-                        name: 'content',
-                        label: 'Conteúdo do Site',
-                        files: [{
-                            name: 'site',
-                            label: 'Configurações',
-                            file: 'data/content.json',
-                            fields: [
-                                { label: 'Título do Site', name: 'title', widget: 'string' },
-                                { label: 'Descrição', name: 'description', widget: 'text' }
-                            ]
-                        }]
-                    }]
+        function initCMS() {
+            var checkCMS = setInterval(function() {
+                if (window.CMS) {
+                    clearInterval(checkCMS);
+                    window.CMS.init({
+                        config: {
+                            backend: {
+                                name: 'github',
+                                repo: 'DemianF-dev/Site-SImil',
+                                branch: 'main'
+                            },
+                            locale: 'pt',
+                            media_folder: 'assets/uploads',
+                            public_folder: '/assets/uploads',
+                            collections: [{
+                                name: 'content',
+                                label: 'Conteúdo do Site',
+                                files: [{
+                                    name: 'site',
+                                    label: 'Configurações',
+                                    file: 'data/content.json',
+                                    fields: [
+                                        { label: 'Título do Site', name: 'title', widget: 'string' },
+                                        { label: 'Descrição', name: 'description', widget: 'text' }
+                                    ]
+                                }]
+                            }]
+                        }
+                    });
                 }
-            });
-        });
+            }, 100);
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCMS);
+        } else {
+            initCMS();
+        }
     </script>
 </body>
 </html>
