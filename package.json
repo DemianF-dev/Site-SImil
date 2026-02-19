@@ -1,11 +1,18 @@
 {
   "name": "site-simil",
-  "version": "1.0.0",
-  "description": "Site SIMIL - Reengenharia Imobiliária",
+  "version": "1.1.0",
+  "description": "Site SIMIL - Reengenharia Imobiliária com TinaCMS",
   "scripts": {
-    "start": "serve ."
+    "dev": "tinacms dev -c \"serve .\"",
+    "build": "tinacms build",
+    "start": "serve .",
+    "cms": "tinacms dev"
   },
   "dependencies": {
-    "serve": "^14.2.1"
+    "serve": "^14.2.1",
+    "tinacms": "^1.6.1"
+  },
+  "devDependencies": {
+    "@tinacms/cli": "^1.6.1"
   }
 }
