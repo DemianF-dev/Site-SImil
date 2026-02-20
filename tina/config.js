@@ -4,7 +4,7 @@ import { defineConfig } from "tinacms";
 export default defineConfig({
   branch: "main",
   clientId: "8dc56619-eacd-4722-b74f-13d80aece224", // Client ID fornecido pelo usuário
-  token: null,    // Será preenchido via Variáveis de Ambiente na Vercel
+  token: "de86876842c7f6d565102264bb9cf3c87d4e6a5a",    // Token fornecido pelo usuário
 
   build: {
     outputFolder: "tina-admin", // Onde o painel será gerado
